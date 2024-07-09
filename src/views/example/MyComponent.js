@@ -9,6 +9,9 @@ import FormComponent from "./FormComponent";
  * tạo thêm thẻ
  * state khá giống với two way binding của vuejs
  * truyền function qua props thì không cần dấu "()"
+ * có 2 loại hàm khác nhau là arrow function và regular function
+ * arrow function chủ yếu dùng cho xử lý sự kiện (onClick, onChange, ...), cách khai báo nameFunction = (có thể có tham số hoặc ko) => {} 
+ * regular function chủ yếu dùng cho xử lý logic, cách khai báo nameFunction(có thể có tham số hoặc không) {}
  */
 
 
@@ -29,6 +32,12 @@ class MyComponent extends React.Component {
         })
     }
 
+    deleteJob = (delJob) => {
+        this.setState({
+            arrJobs: this.state.arrJobs.filter(item => item.id !== delJob.id)
+        })
+    }
+
     render() {
         return (
             <>
@@ -37,7 +46,8 @@ class MyComponent extends React.Component {
                     addNewJob={this.addNewJob}
                 />
                 <ChildComponent
-                    arrJobs={this.state.arrJobs}>
+                    arrJobs={this.state.arrJobs}
+                    deleteJob={this.deleteJob}>
                 </ChildComponent>
             </>
         )

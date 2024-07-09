@@ -17,6 +17,11 @@ class ChildComponent extends React.Component {
         })
     }
 
+    handleDeleteJob(delJob) {
+        // console.log("Check del job", delJob);
+        this.props.deleteJob(delJob)
+    }
+
     render() {
         // let name = this.props.name; cách 1 gõ đầy đủ
         // let age = this.props.age;
@@ -38,8 +43,9 @@ class ChildComponent extends React.Component {
                         {
                             arrJobs.map((item) => {
                                 return (
-                                    <div key={item.title}>
+                                    <div className="flex" key={item.id}>
                                         {item.title} - Salary: {item.salary}$
+                                        <span onClick={() => this.handleDeleteJob(item)} className="ml-8 cursor-pointer">X</span>
                                     </div>
                                 )
                             })
