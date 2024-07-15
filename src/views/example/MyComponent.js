@@ -1,6 +1,7 @@
 import React from "react";
 import ChildComponent from "./ChildComponent";
 import FormComponent from "./FormComponent";
+import { ToastContainer, toast } from "react-toastify";
 /**
  * phần return tương tự phần template trong vuejs, luôn phải return về 1 khối
  * tức chỉ có 1 template bọc 1 khối html
@@ -30,17 +31,19 @@ class MyComponent extends React.Component {
         this.setState({
             arrJobs: [...this.state.arrJobs, job]
         })
+        toast.success('Added Success')
     }
 
     deleteJob = (delJob) => {
         this.setState({
             arrJobs: this.state.arrJobs.filter(item => item.id !== delJob.id)
         })
+        toast.success('Delete Success')
     }
 
     render() {
         return (
-            <>
+            <div className='flex flex-col w-full items-center justify-center'>
                 <div>Html Form</div>
                 <FormComponent
                     addNewJob={this.addNewJob}
@@ -49,7 +52,8 @@ class MyComponent extends React.Component {
                     arrJobs={this.state.arrJobs}
                     deleteJob={this.deleteJob}>
                 </ChildComponent>
-            </>
+                <ToastContainer></ToastContainer>
+            </div>
         )
     }
 }

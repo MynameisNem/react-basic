@@ -41,11 +41,11 @@ class FormComponent extends React.Component {
     render() {
         return (
             <>
-                <form className="flex flex-col my-10" action="">
+                <form className="flex flex-col my-10 max-w-[500px] items-center justify-center" action="">
                     <label htmlFor="fname">Job</label>
-                    <input className="text-black" value={this.state.title} type="text" onChange={(e) => this.handleOnChangeJob(e)} />
+                    <input className="text-black w-full" value={this.state.title} type="text" onChange={(e) => this.handleOnChangeJob(e)} />
                     <label htmlFor="lname">Salary</label>
-                    <input className="text-black" value={this.state.salary} type="text" onChange={(e) => this.handleOnChangeSalary(e)} />
+                    <input className="text-black w-full" value={this.state.salary} type="text" onChange={(e) => this.handleOnChangeSalary(e)} />
                     <button onClick={(e) => this.handleOnClick(e)} className="mt-10 px-4 py-2 bg-white text-black rounded-lg" type="submit" >Submit</button>
                 </form>
             </>
